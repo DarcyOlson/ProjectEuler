@@ -11,27 +11,12 @@
 int largest_prime_factor(double n);//This function will find the largest prime factor of a given input
 void sieve_of_erastothenes(int input[], int size);//This function will find all prime numbers less than size
 void initialize_sieve_array(int input[], int size);
-int find_largest_prime_factor(int input[], int size);
+int find_largest_prime_factor(int input[], int size, double large_num);
 
 int main()
 {
-    double largest = 0.0;
-    int size = (int)ceil(sqrt(600851475143));
     double big_num = 600851475143.0;
-    int test[size];
-    sieve_of_erastothenes(test, size);
-    int i;
-    for(i = 0; i < size; i++){
-        if(test[i] != 0){
-            printf("testing %d \n",i);
-            double test = big_num/i;
-            if((test - floor(test)) == 0){
-                largest = i;
-            }
-        }
-    }
-    printf("%f",largest);
-    //*/
+    printf("The largest prime factor of %f is %d",big_num, largest_prime_factor(big_num));
     return 0;
 }
 
@@ -53,7 +38,7 @@ int largest_prime_factor(double n){
     int primes[factor_upper_bound];
     initialize_sieve_array(primes,factor_upper_bound);
     sieve_of_erastothenes(primes,factor_upper_bound);
-    return find_largest_prime_factor(primes,factor_upper_bound);
+    return find_largest_prime_factor(primes,factor_upper_bound,n);
 }
 void initialize_sieve_array(int input[], int size){
     int i;
@@ -64,18 +49,16 @@ void initialize_sieve_array(int input[], int size){
     }
 }
 
-int find_largest_prime_factor(int input[], int size){
-    int i, largest_factor = 0;
-    for(i = 0;i < size; i++){
-        printf("We evaluate %d:",i);
-        if(input[i] == 1 && size%i == 0){
-            printf("find it satisfactory \n");
-            if(i > largest_factor){
-                largest_factor = i;
+int find_largest_prime_factor(int input[], int size, double big_num){
+    int i;
+    double largest = 0.0;
+    for(i = 0; i < size; i++){
+        if(input[i] != 0){
+            double test = big_num/i;
+            if((test - floor(test)) == 0){
+                largest = i;
             }
-        }else{
-            printf("We find it unsatisfactory \n");
         }
     }
-    return largest_factor;
+    return (int)largest;
 }
