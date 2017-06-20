@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1497940081 source:/Users/darcy/Desktop/ProjectEuler/Project-Euler-6/main.c
+	<stdio.h>
+	<stdlib.h>
+
