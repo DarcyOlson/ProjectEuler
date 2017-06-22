@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1498101402 source:/Users/darcy/Desktop/ProjectEuler/Project-Euler-20/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
